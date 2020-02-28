@@ -53,4 +53,5 @@ messageController.getMessage = (req, res, next) => {
       })
     );
 };
+
 module.exports = messageController;

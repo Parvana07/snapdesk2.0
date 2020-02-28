@@ -147,13 +147,35 @@ ticketsController.getResolvedTickets = (req, res, next) => {
         mentorId: ticket.mentor_id || ""
       }));
       res.locals.resolvedTickets = formatTickets;
+
+      // console.log(res.locals.resolvedTickets);
+      // console.log(formatTickets);
       return next();
     })
+
     .catch(err =>
       next({
         log: `Error in middleware ticketsController.getResolvedTickets: ${err}`
       })
     );
 };
+
+// ticketsController.getResolvedTickets = (req, res, next) => {
+//   const { ticketId, status } = req.body;
+//   const resolvedMessage = {
+//     text: `SELECT message, timestamp FROM tickets WHERE tickets._id = $1 AND status = $2`,
+//     values: [ticketId, status]
+//   };
+//   db.query(resolvedMessage)
+//     .then(result => {
+//       console.log(result);
+//       return next();
+//     })
+//     .catch(err => {
+//       next({
+//         log: `Error in middleware ticketsController.getResolvedMessages: ${err}`
+//       });
+//     });
+// };
 
 module.exports = ticketsController;

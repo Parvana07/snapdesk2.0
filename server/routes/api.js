@@ -61,6 +61,14 @@ apiRouter.put(
   }
 );
 
+apiRouter.get(
+  "/tickets/resolve/display",
+  ticketsController.getResolvedTickets,
+  (req, res) => {
+    // console.log("inside router");
+    res.status(200).json(res.locals.resolvedTickets);
+  }
+);
 //
 // '/api/chat/newMessage'
 apiRouter.post(
